@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script>
+        const root = document.getElementById('root');
+        const Li1 = React.createElement('li', null, 'Ngu Van 1');
+        const Li2 = React.createElement('li', null, 'Ngu Van 2');
+        const Li3 = React.createElement('li', null, 'Ngu Van 3');
+        const Li4 = React.createElement('li', null, 'Ngu Van 4');
+        const Li5 = React.createElement('li', null, 'Ngu Van 5');
+        const Li6 = React.createElement('li', null, 'Ngu Van 6');
+        const Ul = React.createElement('ul', null, Li1, Li2, Li3, Li4, Li5, Li6);
+        ReactDOM.render(Ul, root)
+    </script>
+</body>
+</html>
