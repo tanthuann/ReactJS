@@ -1,5 +1,103 @@
 .App {
+  /* text-align: center; */
+}
+
+.Title {
   text-align: center;
+  font-size: 64px;
+}
+
+.ClearItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  font-family: sans-serif;
+  height: 20px;
+  width: 20px;
+  opacity: 0.5;
+  transition: opacity 0.5s;
+  border: none;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.ClearAll {
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  font-family: sans-serif;
+  font-size: 48px;
+  display: flex;
+  height: 64px;
+  margin: 0 320px;
+  font-family: sans-serif;
+  font-weight: 300;
+  align-items: center;
+}
+
+.ClearItem:hover {
+  opacity: 1;
+}
+
+.Header {
+  background-color: #282c34;
+  font-family: sans-serif;
+  font-size: 16px;
+  display: flex;
+  height: 128px;
+  margin: 0 320px;
+  font-family: sans-serif;
+  font-weight: 300;
+  align-items: center;
+}
+
+.Header:first-child {
+  margin-top: 50px;
+}
+
+.Header > img {
+  margin: 32px;
+}
+
+.Header > input {
+  flex-grow: 1;
+  color: #EEE;
+  background-color: #282c34;
+  width: auto;
+  font-size: 32px;
+  border: none;
+}
+
+.Header > input:focus {
+  outline: none;
+}
+
+.p {
+  text-align: center;
+  margin: 50px;
+  font-size: 64px;
+}
+
+.Footer {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ba82db;
+  font-family: sans-serif;
+  font-size: 32px;
+  display: flex;
+  height: 128px;
+  margin: 0 320px;
+  font-family: sans-serif;
+  font-weight: 300;
+  align-items: center;
+}
+
+.Footer div {
+  margin: 16px 0;
+  width: 100%;
 }
 
 .App-logo {
