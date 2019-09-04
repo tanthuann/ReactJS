@@ -1,55 +1,69 @@
 .App {
   /* text-align: center; */
+  margin: 5vw;
 }
 
 .Title {
   text-align: center;
-  font-size: 64px;
+  font-size: calc(10px + 5vw);
+  background-color: #9674FF;
+  margin: 1vh 0;
+  color: white;
 }
 
 .ClearItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #eee;
-  font-family: sans-serif;
-  height: 20px;
-  width: 20px;
-  opacity: 0.5;
+  margin: 2vmax 2vmax 2vmax 1vmax;
+}
+
+.ClearItem img {
+  opacity: 0.3;
   transition: opacity 0.5s;
-  border: none;
-  border-radius: 50%;
-  margin-right: 20px;
+}
+
+.ClearItem img:hover {
+  opacity: 1;
 }
 
 .ClearAll {
+  color: white;
   display: flex;
   justify-content: center;
-  background-color: red;
+  background-color: #7BB0E0;
   font-family: sans-serif;
-  font-size: 48px;
+  font-size: calc(10px + 1vw);
   display: flex;
-  height: 64px;
-  margin: 0 320px;
+  height: 8vmax;
   font-family: sans-serif;
   font-weight: 300;
   align-items: center;
+  transition: color 1s, background-color 1s;
+}
+
+.ClearAll:hover {
+  color: #EEE;
+  background-color: #F75555;
 }
 
 .ClearItem:hover {
   opacity: 1;
 }
 
+.ClearItem img {
+  width: 2vmax;
+  height: 2vmax;
+}
+
 .Header {
-  background-color: #282c34;
+  background-color: #ef4b4b;
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: calc(5px + 1vw);
   display: flex;
-  height: 128px;
-  margin: 0 320px;
+  height: vh;
   font-family: sans-serif;
   font-weight: 300;
   align-items: center;
+  border-radius: 120px;
+  margin-bottom: 1vh;
 }
 
 .Header:first-child {
@@ -57,50 +71,85 @@
 }
 
 .Header > img {
-  margin: 32px;
+  margin: 2vmax;
+  width: 3vmax;
+  height: 3vmax;
 }
 
 .Header > input {
-  flex-grow: 1;
-  color: #EEE;
-  background-color: #282c34;
-  width: auto;
-  font-size: 32px;
+  background-color: #fff6da;
+  text-align: center;
+  height: 5vh;
+  width: calc(100% - 2vw);
+  color:#757575;
+  font-size: calc(10px + 1vw);
   border: none;
+  border-radius: 120px;
+  transition: font-size 2s, background-color 1s, color 1s;
 }
 
-.Header > input:focus {
+.Header > input:focus, .Header > input:hover {
+  font-size: cal(20px + 1vmax);
   outline: none;
+  background-color: white;
+  color: #6A5792;
+}
+
+::placeholder {
+  font-style: italic;
 }
 
 .p {
   text-align: center;
   margin: 50px;
-  font-size: 64px;
+  font-size: calc(10px + 1vw);
 }
 
 .Footer {
   text-align: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  background-color: #ba82db;
+  background-color: #f4a261;
   font-family: sans-serif;
-  font-size: 32px;
+  font-size: calc(10px + 1vw);
   display: flex;
-  height: 128px;
-  margin: 0 320px;
+  height: 8vh;
   font-family: sans-serif;
   font-weight: 300;
   align-items: center;
+  position: relative;
+  margin-bottom: 2vh;
+  border-radius: 200px;
 }
 
 .Footer div {
   margin: 16px 0;
   width: 100%;
+  height: 100%;
+  border-radius: 200px;
 }
 
-.App-logo {
+.Footer p {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Footer .active {
+  background-color: #9cf196;
+  animation: active 0.8s;
+}
+
+@keyframes 
+active {
+  from {background-color: #f4a261 }
+  to {background-color: #9cf196}
+}
+
+/* .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
@@ -128,4 +177,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

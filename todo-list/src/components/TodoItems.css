@@ -1,16 +1,25 @@
 .TodoItems {
     display: flex;
-    height: 128px;
-    margin: 0 320px;
+    height: 10vh;
     font-family: sans-serif;
     font-weight: 300;
-    font-size: 2em;
+    font-size: calc(10px + 1.5vw);
     border: 1px solid #EEE;
+    transition: background-color 0.8s, height 1s;
 }
 
-.TodoItems:first-child {
-    margin-top: 320px;
+.TodoItems:hover {
+    background-color: #FFE4DF;
+    height: 12vh;
 }
+
+.TodoItems:focus {
+    height: 20vh;
+}
+
+/* .TodoItems:first-child {
+    margin-top: 320px;
+} */
 
 .TodoItems .item {
     width: 100%;
@@ -32,6 +41,11 @@
 
 .TodoItems:hover .item span{
     opacity: 1;
+}
+
+.TodoItems .item > img {
+    width: 3vmax;
+  height: 3vmax;
 }
 
 .TodoItems-complete .item > p {

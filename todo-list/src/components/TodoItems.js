@@ -7,17 +7,18 @@ import deleteIcon from '../img/delete.svg';
 
 class TodoItems extends Component {  
     render() {
-        const { item, onClickCheck, onClickDel } = this.props;  // item = this.props.item
+        const { item, onClickCheck, onClickDel, index } = this.props;  // item = this.props.item
         let url = checkImg;
         if (item.isComplete === true)
             url = checkedImg;
+        console.log(index);
         return (
             <div className={classNames('TodoItems',{
                 'TodoItems-complete': item.isComplete === true
             })}>
                 <div className="item">
-                    <img alt="sgv file" onClick={onClickCheck} src={url} width={64}/>
-                    <p>{item.title}</p>
+                    <img alt="sgv file" onClick={onClickCheck} src={url}/>
+                    <p> {index+1}. {item.title}</p>
                     <span>
                         <img onClick={onClickDel} alt="svg" src={deleteIcon} width={16}/>
                     </span>
