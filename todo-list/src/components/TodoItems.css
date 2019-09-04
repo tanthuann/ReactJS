@@ -9,7 +9,7 @@
 }
 
 .TodoItems:hover {
-    background-color: #FFE4DF;
+    background-color: #65fad71a;
     height: 12vh;
 }
 
@@ -45,10 +45,13 @@
 
 .TodoItems .item > img {
     width: 3vmax;
-  height: 3vmax;
+    height: 3vmax;
+    text-decoration: none;
+    transition: text-decoration 1s;
 }
 
 .TodoItems-complete .item > p {
+    width: 20vw;
     text-decoration: line-through;
     opacity: 0.3;
 }

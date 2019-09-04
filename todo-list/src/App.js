@@ -146,9 +146,12 @@ class App extends Component {
   }
 
   onClearAll() {
-    this.setState({
-      todoItems: []
-    })
+    let check = window.confirm('Do you want detele all ? ');
+    if (check === true)
+      this.setState({
+        todoItems: []
+      })
+    else return;
   }
 
   onDisplayAll() {
@@ -205,7 +208,7 @@ class App extends Component {
     console.log(list);
     return (
       <div className="App">
-        <h1 className="Title">~Todo List~</h1>
+        <h1 className="Title">~Todo List~ <span>{todoItems.length}</span></h1>
         <div className="Header">
           <img alt="svg" src={url} onClick={this.onCheckAll} />
           <input value={newItem}
