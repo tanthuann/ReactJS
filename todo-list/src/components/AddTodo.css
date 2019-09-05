@@ -1,0 +1,75 @@
+.Header {
+    background-color: rgb(140, 177, 255);
+    font-family: sans-serif;
+    font-size: calc(5px + 1vw);
+    display: flex;
+    height: 12vmin;
+    font-family: sans-serif;
+    font-weight: 300;
+    align-items: center;
+    /* border-radius: 120px; */
+    margin-bottom: 1vh;
+  }
+  
+  .Header:first-child {
+    margin-top: 50px;
+  }
+  
+  .Header > img {
+    margin: 2vmax;
+    width: 3vmax;
+    height: 3vmax;
+  }
+  
+  .Header > input {
+    padding: 0;
+    background-color: #272d33;
+    text-align: center;
+    height: 7vmin;
+    width: calc(100% - 2vw);
+    color:white;
+    font-size: calc(10px + 1vw);
+    border: none;
+    border-radius: 50px 0 0 50px;
+    transition: font-size 2s;
+  }
+  
+  .Header > input:focus, .Header > input:hover,  .Header button:focus{
+    font-size: cal(20px + 1vmax);
+    outline: none;
+  }
+
+  .Header button{
+    padding-right: 10px;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    background-color: #272d33;
+    height: 7vmin;
+  }
+
+  .Header button img{
+    width: 3vmin;
+  }
+  
+  .Header > input::placeholder {
+    font-size: calc(10px + 1vmax);
+    font-style: italic;
+  }
+
+  .ClearItem {
+    margin: 2vmax 2vmax 2vmax 1vmax;
+  }
+  
+  .ClearItem img {
+    opacity: 0.3;
+    transition: opacity 0.5s;
+  }
+  
+  .ClearItem img:hover {
+    opacity: 1;
+  }
+  
+  .ClearItem img {
+    width: 3vmin;
+    height: 3vmin;
+  }

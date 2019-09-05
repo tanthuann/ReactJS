@@ -30,7 +30,8 @@
 
 .TodoItems .item > p {
     margin: 0 30px;
-    width: 100%;
+    width:inherit; /* width: 100px; */
+    white-space: pre-wrap;
     flex-grow: 1;
 }
 

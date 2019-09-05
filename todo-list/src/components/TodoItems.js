@@ -11,7 +11,6 @@ class TodoItems extends Component {
         let url = checkImg;
         if (item.isComplete === true)
             url = checkedImg;
-        console.log(index);
         return (
             <div className={classNames('TodoItems',{
                 'TodoItems-complete': item.isComplete === true

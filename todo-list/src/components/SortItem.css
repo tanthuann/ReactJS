@@ -1,0 +1,40 @@
+.Footer {
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #ffcea7;
+    font-family: sans-serif;
+    font-size: calc(10px + 1vw);
+    display: flex;
+    height: 8vh;
+    font-family: sans-serif;
+    font-weight: 300;
+    margin-bottom: 1vh;
+    border-radius: 200px;
+  }
+  
+  .Footer div {
+    width: 100%;
+    height: 100%;
+    border-radius: 200px;
+  }
+  
+  .Footer p {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Footer .active {
+    background-color: #b1ffab;
+    animation: active 0.8s;
+  }
+
+@keyframes 
+active {
+  from {background-color: #ffcea7 }
+  to {background-color: #b1ffab}
+}

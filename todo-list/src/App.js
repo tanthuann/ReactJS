@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import TodoItems from './components/TodoItems';
+import TodoItems from './components/TodoItems.js';
+import AddTodo from './components/AddTodo.js';
+import Search from './components/Search.js';
+import SortItem from './components/SortItem.js';
+import LastPage from './components/LastPage.js';
+
 import checkImg from './img/check.svg'
 import checkImgAllOn from './img/checked-dark.svg'
 import deleteIcon from './img/delete.svg';
-import classNames from 'classnames'
+// import classNames from 'classnames';
+import addIcon from './img/plus.svg';
+import searchIcon from './img/search.svg';
 
 class App extends Component {
   constructor() {
@@ -29,6 +36,7 @@ class App extends Component {
     if (!dataSession)
       dataStr = '';
     this.state = {
+      searchItem: '',
       isThis: this,
       isCheckAll: false,
       storageKey: storageKey,
@@ -46,6 +54,11 @@ class App extends Component {
     this.onDisplayAll = this.onDisplayAll.bind(this);
     this.onDisplayComplete = this.onDisplayComplete.bind(this);
     this.onDisplayInComplete = this.onDisplayInComplete.bind(this);
+    this.onSearchItem = this.onSearchItem.bind(this);
+    this.onClearAllCompleted = this.onClearAllCompleted.bind(this);
+    this.onClearAllActive = this.onClearAllActive.bind(this);
+    this.onClickSubmit = this.onClickSubmit.bind(this);
+    this.onClickSearch = this.onClickSearch.bind(this);
   }
 
   onItemClick(item) {
@@ -53,7 +66,6 @@ class App extends Component {
       const isComplete = item.isComplete;
       const { todoItems } = this.state; // this.state.todoItems
       const index = todoItems.indexOf(item);
-      console.log(todoItems);
       this.setState({
         todoItems: [
           ...todoItems.slice(0, index),
@@ -64,8 +76,33 @@ class App extends Component {
           ...todoItems.slice(index + 1)
         ]
       });
-      console.log(todoItems);
     };
+  }
+
+  onClickSubmit(event) {
+    console.log(event.target.value);
+    // sessionStorage.setItem('draft', event.target.value);
+    let text = sessionStorage.getItem('draft');
+    if (!text)
+      return;
+    text = text.trim();
+    if (!text)
+      return;
+    sessionStorage.setItem('draft', '');
+    this.setState({
+      newItem: '',
+      todoItems: [
+        { title: text, isComplete: false },
+        ...this.state.todoItems
+      ]
+    });
+  }
+
+  onClickSearch() {
+    let strSearch = sessionStorage.getItem('search');
+    this.setState({
+      searchItem: strSearch
+    })
   }
 
   onKeyUp(event) {
@@ -86,6 +123,24 @@ class App extends Component {
         ]
       });
     }
+
+  }
+
+  onSearchItem(event) {
+    let strSearch = event.target.value;
+    sessionStorage.setItem('search', strSearch);
+    if (event.keyCode === 13) {
+      this.setState({
+        searchItem: strSearch
+      })
+    }
+    // let listSearch = this.state.todoItems.filter( (item) => {
+    //   return item.title.toLowerCase().indexOf(strSearch) > -1;
+    // });
+    // console.log(listSearch);
+    //   this.setState({
+    //     todoItems: listSearch
+    //   })
   }
 
   onCheckAll(event) {
@@ -154,6 +209,32 @@ class App extends Component {
     else return;
   }
 
+  onClearAllCompleted() {
+    let check = window.confirm('Do you want detele all todo completed ? ');
+    if (check === true) {
+      let list = this.state.todoItems.filter((item) => {
+        return item.isComplete === false;
+      })
+      this.setState({
+        todoItems: list
+      })
+    }
+    else return;
+  }
+
+  onClearAllActive() {
+    let check = window.confirm('Do you want detele all todo active ? ');
+    if (check === true) {
+      let list = this.state.todoItems.filter((item) => {
+        return item.isComplete === true;
+      })
+      this.setState({
+        todoItems: list
+      })
+    }
+    else return;
+  }
+
   onDisplayAll() {
     this.setState({
       currentFilter: 'all',
@@ -176,10 +257,17 @@ class App extends Component {
   }
 
   FunctionCheck() {
-    const { todoItems, currentFilter, isCheckAll } = this.state;
-    let list;
+    const { todoItems, currentFilter, isCheckAll, searchItem } = this.state;
+    let list = todoItems;
+    console.log(searchItem);
+    console.log(list);
     let url;
-    let c = this.state.todoItems.reduce((count, i) => {
+
+    list = list.filter((item) => {
+      return item.title.toLowerCase().indexOf(searchItem) > -1;
+    });
+
+    let c = list.reduce((count, i) => {
       if (i.isComplete === true)
         return count + 1;
       return count;
@@ -187,13 +275,12 @@ class App extends Component {
     if (c === todoItems.length) {
       c = true;
     } else c = false;
-    console.log(c);
     if (currentFilter === 'complete')
-      list = todoItems.filter(item => item.isComplete === true)
+      list = list.filter(item => item.isComplete === true)
     if (currentFilter === 'incomplete')
-      list = todoItems.filter(item => item.isComplete === false)
-    if (currentFilter === 'all')
-      list = todoItems;
+      list = list.filter(item => item.isComplete === false)
+    // if (currentFilter === 'all')
+    //   list = list;
     if (isCheckAll === true || c === true)
       url = checkImgAllOn;
     else url = checkImg;
@@ -203,34 +290,32 @@ class App extends Component {
   }
   render() {
     const { todoItems, newItem, isFocus } = this.state;
-    const { list, url } = this.FunctionCheck();
-    localStorage.setItem(this.state.storageKey, JSON.stringify(todoItems));
+    let { list, url } = this.FunctionCheck();
     console.log(list);
+    localStorage.setItem(this.state.storageKey, JSON.stringify(todoItems));
     return (
       <div className="App">
         <h1 className="Title">~Todo List~ <span>{todoItems.length}</span></h1>
-        <div className="Header">
-          <img alt="svg" src={url} onClick={this.onCheckAll} />
-          <input value={newItem}
-            type="text"
-            placeholder="Add new todo..."
-            onKeyUp={this.onKeyUp}
-            onChange={this.onChange} />
-
-          <div className="ClearItem" onClick={this.onClearItem}>
-            <img alt="svg" src={deleteIcon} />
-          </div>
-        </div>
-        <div className="Footer">
-          <div onClick={this.onDisplayAll} className={classNames('all', { active: isFocus[0] === 1 })}><p>All</p></div>
-          <div onClick={this.onDisplayComplete} className={classNames('complete', { active: isFocus[1] === 1 })}><p>Completed</p></div>
-          <div onClick={this.onDisplayInComplete} className={classNames('incomplete', { active: isFocus[2] === 1 })}><p>Active</p></div>
-        </div>
+        <AddTodo  onClickCheckAll={this.onCheckAll}
+                  onKeyUpAdd={this.onKeyUp}
+                  onChange={this.onChange}
+                  onClickSubmit={this.onClickSubmit}
+                  onClickClearItem={this.onClearItem}
+                  var={{ url, newItem, addIcon, deleteIcon }}
+        />
+        <Search onKeyUpSearchItem={this.onSearchItem} onClickSearch={this.onClickSearch} src={searchIcon} />
+        <SortItem onClickDisplayAll={this.onDisplayAll}
+                  onClickDisplayComplete={this.onDisplayComplete}
+                  onClickDisplayInComplete={this.onDisplayInComplete}
+                  isFocus={isFocus}
+        />
         {list.length === 0 && <p className="p">Nothing...</p>}
         {list.length > 0 && list.map((item, index) =>
-          <TodoItems key={index} index={index} item={item} onClickCheck={this.onItemClick(item)} onClickDel={this.deteleItem(index)} />)
-        }
-        <div onClick={this.onClearAll} className="ClearAll">Clear All</div>
+          <TodoItems key={index} index={index} item={item} onClickCheck={this.onItemClick(item)} onClickDel={this.deteleItem(index)} />)}
+        <LastPage onClickClearAll={this.onClearAll}
+                  onClickClearAllCompleted={this.onClearAllCompleted}
+                  onClickClearAllActive={this.onClearAllActive} 
+        />
       </div>
     );
   }

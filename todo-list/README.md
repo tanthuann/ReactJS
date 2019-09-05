@@ -4,6 +4,8 @@
 
 - **v1.0.1** ***05/09/2019***: Update Clear all comfirm, display length todolist
 
+- **v1.0.2** ***05/09/2019***: Update Clear all complete, active, search item with icon...
+
 ## Available Scripts
 
 In the project directory, you can run:
