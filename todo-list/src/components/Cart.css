@@ -1,0 +1,45 @@
+body {
+	font-family: sans-serif;
+}
+
+.video-rank {
+	display: flex;
+	padding: 15px 0;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.video-rank .album-cover {
+	display: flex;
+	flex-direction: row;
+	background-image: url(./cover.png);
+	background-size: cover;
+	background-position: center;
+	height: 128px;
+	width: 128px;
+}
+
+.album-cover .overlay {
+	padding: 0 0 5px 8px;
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 42%, rgba(0,0,0,0) 100%);
+    color: #fff;
+    display: flex;
+	align-items: flex-end;
+	flex-grow: 1;
+	font-size: 20px;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	margin: 5px 0 0 15px;
+	text-transform: capitalize;
+	width: 75%;
+}
+
+.info .song-title, .info .singer, .info .view-count {
+	margin-bottom: 5px;
+}
+
+.info .singer, .info .view-count {
+	color: #AAAAAA;
+}

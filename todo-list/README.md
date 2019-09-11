@@ -6,6 +6,8 @@
 
 - **v1.0.2** ***05/09/2019***: Update Clear all complete, active, search item with icon...
 
+- **v1.0.3** ***11/09/2019***: Update clear code. 
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import './Search.css'
+import PropTypes from 'prop-types';
+
+import './Search.css';
 
 class Search extends Component {
     render() {
-        const { onKeyUpSearchItem, onClickSearch, src } = this.props;
+        const { onKeyUpSearchItem} = this.props;
         return (
             <div className="search">
                 <input onKeyUp={onKeyUpSearchItem} type="text" placeholder="Search..." />
-                <button type="submit" onClick={onClickSearch}><img alt="svg" src={src} /></button>
             </div>
         );
-    }
+    }   
+}
+
+Search.propTypes = {
+    onKeyUpSearchItem: PropTypes.func
 }
 
 export default Search;

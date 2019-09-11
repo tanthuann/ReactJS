@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
 import './SortItem.css';
 
 class SortItem extends Component {
@@ -13,6 +15,13 @@ class SortItem extends Component {
             </div>
         )
     }
+}
+
+SortItem.propTypes = {
+    onClickDisplayAll: PropTypes.func,
+    onClickDisplayComplete: PropTypes.func,
+    onClickDisplayInComplete: PropTypes.func,
+    isFocus: PropTypes.array
 }
 
 export default SortItem;

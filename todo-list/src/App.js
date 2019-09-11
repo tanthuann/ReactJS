@@ -9,9 +9,9 @@ import LastPage from './components/LastPage.js';
 
 import checkImg from './img/check.svg'
 import checkImgAllOn from './img/checked-dark.svg'
-import deleteIcon from './img/delete.svg';
+
 // import classNames from 'classnames';
-import addIcon from './img/plus.svg';
+
 import searchIcon from './img/search.svg';
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
     let list;
     let storageKey = 'todoList';
     let dataString = localStorage.getItem(storageKey);
-    let dataSession = sessionStorage.getItem('draft');
+    let dataSession = sessionStorage.getItem('draft') || "";
     let dataStr = dataSession;
     if (dataString) {
       list = JSON.parse(dataString);
@@ -33,8 +33,6 @@ class App extends Component {
         { title: 'Mua Gà', isComplete: false }
       ]
     }
-    if (!dataSession)
-      dataStr = '';
     this.state = {
       searchItem: '',
       isThis: this,
@@ -58,7 +56,6 @@ class App extends Component {
     this.onClearAllCompleted = this.onClearAllCompleted.bind(this);
     this.onClearAllActive = this.onClearAllActive.bind(this);
     this.onClickSubmit = this.onClickSubmit.bind(this);
-    this.onClickSearch = this.onClickSearch.bind(this);
   }
 
   onItemClick(item) {
@@ -80,7 +77,6 @@ class App extends Component {
   }
 
   onClickSubmit(event) {
-    console.log(event.target.value);
     // sessionStorage.setItem('draft', event.target.value);
     let text = sessionStorage.getItem('draft');
     if (!text)
@@ -98,12 +94,12 @@ class App extends Component {
     });
   }
 
-  onClickSearch() {
-    let strSearch = sessionStorage.getItem('search');
-    this.setState({
-      searchItem: strSearch
-    })
-  }
+  // onClickSearch() {
+  //   let strSearch = sessionStorage.getItem('search');
+  //   this.setState({
+  //     searchItem: strSearch
+  //   })
+  // }
 
   onKeyUp(event) {
     sessionStorage.setItem('draft', event.target.value);
@@ -129,11 +125,11 @@ class App extends Component {
   onSearchItem(event) {
     let strSearch = event.target.value;
     sessionStorage.setItem('search', strSearch);
-    if (event.keyCode === 13) {
+    //if (event.keyCode === 13) {
       this.setState({
         searchItem: strSearch
       })
-    }
+    //}
     // let listSearch = this.state.todoItems.filter( (item) => {
     //   return item.title.toLowerCase().indexOf(strSearch) > -1;
     // });
@@ -259,13 +255,13 @@ class App extends Component {
   FunctionCheck() {
     const { todoItems, currentFilter, isCheckAll, searchItem } = this.state;
     let list = todoItems;
-    console.log(searchItem);
-    console.log(list);
     let url;
+    if(searchItem !== ''){
 
-    list = list.filter((item) => {
-      return item.title.toLowerCase().indexOf(searchItem) > -1;
-    });
+      list = list.filter((item) => {
+        return item.title.toLowerCase().indexOf(searchItem.toLowerCase()) > -1;
+      });
+    }
 
     let c = list.reduce((count, i) => {
       if (i.isComplete === true)
@@ -291,7 +287,6 @@ class App extends Component {
   render() {
     const { todoItems, newItem, isFocus } = this.state;
     let { list, url } = this.FunctionCheck();
-    console.log(list);
     localStorage.setItem(this.state.storageKey, JSON.stringify(todoItems));
     return (
       <div className="App">
@@ -301,9 +296,9 @@ class App extends Component {
                   onChange={this.onChange}
                   onClickSubmit={this.onClickSubmit}
                   onClickClearItem={this.onClearItem}
-                  var={{ url, newItem, addIcon, deleteIcon }}
+                  var={{ url, newItem }}
         />
-        <Search onKeyUpSearchItem={this.onSearchItem} onClickSearch={this.onClickSearch} src={searchIcon} />
+        <Search onKeyUpSearchItem={this.onSearchItem} />
         <SortItem onClickDisplayAll={this.onDisplayAll}
                   onClickDisplayComplete={this.onDisplayComplete}
                   onClickDisplayInComplete={this.onDisplayInComplete}

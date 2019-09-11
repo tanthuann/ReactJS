@@ -9,31 +9,15 @@
     font-size: 20px;
     background: rgb(248, 217, 217);
     border: 5px solid #473e3e;
-    border-right: none;
     min-width: 0;
     color: black;
     padding: .75rem 1.5rem;
-    border-radius: 27px 0 0 27px;
+    border-radius: 27px;
     margin-bottom: 1vh;
   }
   
-  .search input:focus,  .search button:focus{
+  .search input:focus{
     outline: none;
-  }
-
-  .search button {
-    padding: 0 0 0;
-    background: rgb(248, 217, 217);
-    width: 7vmin;
-    border: 5px solid #473e3e;
-    border-left: none;
-    border-radius: 0px 27px 27px 0px;
-    height: 6vh;
-  }
-
-  .search button img {
-    width: 3vmin;
-    height: 3vmin;
   }
 
 ::placeholder {
