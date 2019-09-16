@@ -4,8 +4,10 @@ import {
   CardTitle, Button, Col
 } from 'reactstrap';
 
+import { CartContext } from '../contexts/Cart.js';
+
 const Products = (props) => {
-    const{img, product, description} = props.product;
+  const { img, product, description } = props.products;
   return (
     <Col sm="6" xl="4">
       <Card>
@@ -13,7 +15,9 @@ const Products = (props) => {
         <CardBody>
           <CardTitle>{product}</CardTitle>
           <CardText>{description}</CardText>
-          <Button>Add to Cart</Button>
+          <CartContext.Consumer>
+            {({ addToCart }) => <Button onClick={() => addToCart(props.products)}>Add to Cart</Button>}
+          </CartContext.Consumer>
         </CardBody>
       </Card>
     </Col>
