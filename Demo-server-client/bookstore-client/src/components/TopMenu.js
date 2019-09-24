@@ -44,11 +44,6 @@ export default class TopMenu extends Component {
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/user/register">
-                                <Link to="/" className="ml-2">Create</Link>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
                             <NavLink href="/user/login">
                                 <Link to="/" className="ml-2">Login</Link>
                             </NavLink>

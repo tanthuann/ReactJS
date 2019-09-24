@@ -19,7 +19,6 @@ export class Cart extends Component {
 
     callAPI() {
         axios.get('/api/books').then((res) => {
-            console.log(res.data);
             if (res.data.denied) {
                 this.setState({
                     dataBestSeller: res.data.dataBestSeller,
@@ -39,7 +38,6 @@ export class Cart extends Component {
     }
 
     addToCart(book) {
-        console.log(book);
         this.setState({
             cartItem: this.state.cartItem.concat(book)
         })
@@ -47,7 +45,7 @@ export class Cart extends Component {
 
     render() {
         const { cartItem, data, denied, dataBestSeller } = this.state;
-
+        console.log(this.state);
         return (<CartContext.Provider value={{
             addToCart: this.addToCart,
             cartItem: cartItem,

@@ -7,7 +7,7 @@ import {
 } from 'reactstrap';
 
 import { CartContext } from '../contexts/Cart.js';
-import Books from './Books.js';
+import Books from './CardBooks.js';
 
 
 export default function () {
@@ -16,13 +16,13 @@ export default function () {
       <div className=" introduction text-center row justify-content-center align-items-center start-bootstrap">
         <div className="col-lg-10 align-self-end">
           <h1 className="display-4 text-white font-weight-bolder text-primary">
-            WELCOME TO Z01NN'S WEB
+            Welcome to z01nn's bookstore
               </h1>
           <hr className="divider my-4" />
         </div>
         <div className="col-lg-8 align-self-baseline">
           <p className="h5 text-white font-weight-light mb-5 text-primary">
-            Web is built by Bootstrap.
+            Web is built by React.
           </p>
           <p className="h2">Best Books of All Time</p>
         </div>

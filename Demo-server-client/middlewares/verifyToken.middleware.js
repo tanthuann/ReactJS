@@ -19,12 +19,11 @@ export default async function ( req, res, next) {
         //res.send(sortedBook );
         return;
     }
-
     try{
-        const verified =  jwt.verify( token, process.env.TOKEN_SECRET, (err, decode) => {
+         jwt.verify( token, process.env.TOKEN_SECRET, (err, decode) => {
         });
-        console.log('????');
-        req.user = verified;
+        // console.log('????');
+        // req.user = verified;
 
     }catch(err){
         //res.status(400).send('Invalid Token');

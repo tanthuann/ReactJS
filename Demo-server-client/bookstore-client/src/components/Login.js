@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect, withRouter, BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 //BOOTSTRAP
 import {
@@ -87,6 +87,8 @@ class Login extends Component {
                         <input className="form-control" id="password" onChange={this.onChangeKey} type="password" name="password" value={password} />
                     </div>
                     <button onClick={this.onLogin} className="my-2 btn btn-success">Login</button>
+                    <p/>
+                    <Link className="my-2 ml-auto btn btn-primary" to="/user/register">Register</Link>
                 </div>
             </div>
         )
